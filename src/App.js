@@ -2,11 +2,10 @@ import React, { useState, useEffect } from "react";
 import Navbar from "./components/Navbar.js";
 // Libreria para manejar el enrutamiento y la navegación entre diferentes páginas en una aplicación de una sola página (SPA
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Container } from "semantic-ui-react";
+import { Container, Dimmer, Loader } from "semantic-ui-react";
 import Home from "./components/Home";
 import Planets from "./components/Planets";
 import People from "./components/People";
-
 
 export default function App() {
   const [people, setPeople] = useState([]);
@@ -28,6 +27,7 @@ export default function App() {
 
     fetchPeople();
     fetchPlanets();
+    setLoading(false);
   });
 
   console.log("people", people);
@@ -38,15 +38,20 @@ export default function App() {
       <Router>
         <Navbar />
         <Container>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/people" element={<People />} />
-            <Route path="/planets" element={<Planets />} />
-          </Routes>
+          {loading ? (
+            <Dimmer active inverted>
+              <Loader inverted>Loading</Loader>
+            </Dimmer>
+          ) : ( 
+            //en v6, la sintaxis para definir una ruta con su elemento (componente) es un poco diferente. En lugar de colocar el componente directamente dentro del <Route> como contenido, debes usar la prop element.
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/people" element={<People data={people} />} />
+              <Route path="/planets" element={<Planets data={planets} />} />
+            </Routes>
+          )}
         </Container>
       </Router>
     </>
   );
 }
-
-
