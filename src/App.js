@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
+import Navbar from './components/Navbar'
 
 function App() {
   const [ people, setPeople ] = useState([]);
@@ -25,13 +26,15 @@ function App() {
   })
 
   console.log('people', people)
-  console.log('people', planets)
+  console.log('planet', planets)
 
   return (
     <div className="App">
-      Hello
+      <Navbar />
+      Hola
     </div>
   );
 }
 
 export default App;
+
