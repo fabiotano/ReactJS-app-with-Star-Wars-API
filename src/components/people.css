@@ -1,0 +1,27 @@
+.grid-people {
+    display: flex;
+    flex-wrap: wrap;
+    width: 80%;
+    margin: auto;
+    justify-content: space-between;
+    max-width: 1152px;
+}
+
+.card-people {
+    padding: 20px;
+    background-color: #f0f0f0;
+    opacity: 0.9;
+    border-radius: 12px;
+    border: solid 3px yellow;
+    width: 500px;
+    margin: 14px;
+  }
+
+  strong {
+    font-size: 16px;
+  }
+
+  h1 {
+    color: white;
+    text-align: center;
+  }

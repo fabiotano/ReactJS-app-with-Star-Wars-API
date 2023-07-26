@@ -1,33 +1,28 @@
 import React from "react";
-import { Card, Grid } from "semantic-ui-react";
-import "./people.css"; // Importar el archivo CSS
+import "./people.css";
 
-
-export default function People( {data} ) {
+export default function People({ data }) {
   return (
-    <div className='body-bg-image-people'>
+    <div className="body-bg-image-people">
       <h1>People</h1>
-      <Grid columns='3'>
-        {data.map( (people, i) => {
+      <div className="grid-people">
+        {data.map((people, i) => {
           return (
-            <Grid.Column key={i}>
-              <Card>
-                <Card.Content>
-                  <Card.Header>{people.name}</Card.Header>
-                  <Card.Description>
-                    <strong>Height</strong>
-                    <p>{people.height}</p>
-                    <strong>Mass</strong>
-                    <p>{people.mass}</p>
-                    <strong>Hair Color</strong>
-                    <p>{people.hair_color}</p>
-                  </Card.Description>
-                </Card.Content>
-              </Card>
-            </Grid.Column>
-          )
+            <div className="card-people" key={i}>
+              <h2>{people.name}</h2>
+              <p>
+                <strong>Climate:</strong> {people.height}
+              </p>
+              <p>
+                <strong>Diameter:</strong> {people.mass}
+              </p>
+              <p>
+                <strong>Population:</strong> {people.hair_color}
+              </p>
+            </div>
+          );
         })}
-      </Grid>
+      </div>
     </div>
   );
 }
