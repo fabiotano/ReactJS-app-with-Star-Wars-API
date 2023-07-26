@@ -15,4 +15,9 @@
     border: solid 3px yellow;
     width: 500px;
     margin: 14px;
+    transition: transform 0.5s;
   }
+
+  .card-planet:hover {
+    transform:translateY(-10px)
+ }

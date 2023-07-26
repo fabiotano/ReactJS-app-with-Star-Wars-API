@@ -7,6 +7,8 @@ import Header from "./components/Header";
 import Navbar from "./components/Navbar";
 import "./App.css"; // Importa tu archivo de estilos CSS personalizados aquí
 
+// llamada a la API
+
 export default function App() {
   const [people, setPeople] = useState([]);
   const [planets, setPlanets] = useState([]);
@@ -14,22 +16,40 @@ export default function App() {
 
   useEffect(() => {
     async function fetchPeople() {
-      let res = await fetch("https://swapi.dev/api/people/?format=json");
-      let data = await res.json();
-      setPeople(data.results);
-      setLoading(false);
+      let allPeople = [];
+      let page = "https://swapi.dev/api/people/?format=json";
+
+      while (page) {
+        let res = await fetch(page);
+        let data = await res.json();
+        allPeople = [...allPeople, ...data.results];
+        page = data.next;
+      }
+
+      setPeople(allPeople);
     }
 
     async function fetchPlanets() {
-      let res = await fetch("https://swapi.dev/api/planets/?format=json");
-      let data = await res.json();
-      setPlanets(data.results);
-      setLoading(false);
+      let allPlanets = [];
+      let page = "https://swapi.dev/api/planets/?format=json";
+
+      while (page) {
+        let res = await fetch(page);
+        let data = await res.json();
+        allPlanets = [...allPlanets, ...data.results];
+        page = data.next;
+      }
+
+      setPlanets(allPlanets);
     }
 
-    fetchPeople();
-    fetchPlanets();
+    // Usamos Promise.all para esperar a que ambas llamadas a la API finalicen
+    Promise.all([fetchPeople(), fetchPlanets()]).then(() => {
+      setLoading(false);
+    });
   }, []);
+
+  //
 
   console.log("people", people);
   console.log("planet", planets);

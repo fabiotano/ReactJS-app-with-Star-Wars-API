@@ -7,15 +7,24 @@
     max-width: 1152px;
 }
 
+.container {
+  perspective: 1000px; /* Añade perspectiva para un efecto de rotación 3D */
+}
+
 .card-people {
-    padding: 20px;
-    background-color: #f0f0f0;
-    opacity: 0.9;
-    border-radius: 12px;
-    border: solid 3px yellow;
-    width: 500px;
-    margin: 14px;
-  }
+  padding: 20px;
+  background-color: #f0f0f0;
+  opacity: 0.9;
+  border-radius: 12px;
+  border: solid 3px yellow;
+  width: 500px;
+  margin: 4px 14px 24px;
+  transition: transform 1s; /* Agregamos una transición suave al efecto de hover */
+}
+
+.card-people:hover {
+  transform: rotateY(360deg); /* Rota la tarjeta 180 grados en sentido horizontal cuando haces hover */
+}
 
   strong {
     font-size: 16px;
