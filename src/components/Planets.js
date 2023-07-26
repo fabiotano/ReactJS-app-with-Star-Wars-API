@@ -1,17 +1,18 @@
 import React from "react";
 import { Card, Grid } from "semantic-ui-react";
+import './planets.css'
 
 
 export default function Planets ( {data} ) {
   return (
-    <div>
+    <div className='body-bg-image-planets'>
       <h1>Planets</h1>
-      <Grid columns='3'>
+      <Grid className="grid" columns='3'>
         {data.map( (planets, i) => {
           return (
             <Grid.Column key={i}>
               <Card>
-                <Card.Content>
+                <Card.Content className="card">
                   <Card.Header>{planets.name}</Card.Header>
                   <Card.Description>
                     <strong>Climate</strong>

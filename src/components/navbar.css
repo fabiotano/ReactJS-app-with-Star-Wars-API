@@ -1,0 +1,19 @@
+/* navbar.css */
+
+.ui.inverted.menu .item {
+    color: yellow !important; /* Color de texto amarillo para los items del menú */
+    font-style: bold !important;
+  }
+  
+  .ui.inverted.menu .item:hover {
+    color: white !important;
+  }
+
+  .ui.inverted.menu {
+    margin: 0;
+    border: 0 solid yellow !important;
+    background-color: black !important;
+    border-radius: 0;
+}
+
+  

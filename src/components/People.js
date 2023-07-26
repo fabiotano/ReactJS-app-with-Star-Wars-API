@@ -1,10 +1,11 @@
 import React from "react";
 import { Card, Grid } from "semantic-ui-react";
+import "./people.css"; // Importar el archivo CSS
 
 
 export default function People( {data} ) {
   return (
-    <div>
+    <div className='body-bg-image-people'>
       <h1>People</h1>
       <Grid columns='3'>
         {data.map( (people, i) => {
